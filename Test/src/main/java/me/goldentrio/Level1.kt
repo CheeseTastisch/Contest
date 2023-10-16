@@ -1,21 +1,18 @@
 package me.goldentrio
 
-import me.goldentrio.source.standard.file
-import me.goldentrio.util.extention.path
+import me.goldentrio.source.standard.directory
 
-fun main() {
-    Contest({
-        file("Test/testin/a.in".path) {
-            expectedPath = "Test/testin/output.out".path
-        }
-    }) {
-        writeInt(readInts().sum())
-        writeLine(readLine().joinToString("-"))
-        writeBreak()
-        writeBreak()
-
-        if (hasNextLine()) readLine()
-
-        repeat()
+fun main() = Contest({
+    directory("Test/testin") {
+        expected("a", "Test/testin/output.out")
     }
+}) {
+    writeInt(readInts().sum())
+    writeLine(readLine().joinToString("-"))
+    writeBreak()
+    writeBreak()
+
+    if (hasNextLine()) readLine()
+
+    repeat()
 }
