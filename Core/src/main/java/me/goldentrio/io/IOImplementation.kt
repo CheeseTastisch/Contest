@@ -1,14 +1,21 @@
-package me.goldentrio.implementation
+package me.goldentrio.io
 
+import me.goldentrio.source.Source
 import java.util.*
-import me.goldentrio.IO as IOInterface
 
-internal class IO(
-    override val inputQueue: Deque<Deque<String>>,
-    override val outputQueue: Deque<Deque<String>>,
-) : IOInterface {
+internal class IOImplementation(
+    source: Source,
+    val solve: IO.() -> Unit,
+) : IO {
 
-    lateinit var repeat: () -> Unit
+
+    override val inputQueue: Deque<Deque<String>> = source.input
+    override val outputQueue: Deque<Deque<String>> = LinkedList()
+
+    init {
+        this.solve()
+        source.writeOutput(outputQueue)
+    }
 
     override fun readLine(peek: Boolean) =
         if (peek) inputQueue.peek().toList()
@@ -56,7 +63,7 @@ internal class IO(
     }
 
     override fun repeat() {
-        repeat.invoke()
+        if (hasNextLine()) this.solve()
     }
 
 

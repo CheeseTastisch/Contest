@@ -1,22 +1,21 @@
 package me.goldentrio
 
-import me.goldentrio.extention.path
+import me.goldentrio.source.standard.file
+import me.goldentrio.util.extention.path
 
 fun main() {
     Contest({
-        +"Test/testin/".path
+        file("Test/testin/a.in".path) {
+            expectedPath = "Test/testin/output.out".path
+        }
     }) {
-        val (a, b, c) = readInts()
-        val (d, e) = readDoubles()
-        val first = readValue()
-        val other = readLine()
+        writeInt(readInts().sum())
+        writeLine(readLine().joinToString("-"))
+        writeBreak()
+        writeBreak()
 
-        writeInt(a + b)
-        writeLine("$c")
-        writeDoubles(d + e)
-        writeValue(first)
-        writeValue(other.joinToString("-"))
-        writeBreak()
-        writeBreak()
+        if (hasNextLine()) readLine()
+
+        repeat()
     }
 }
