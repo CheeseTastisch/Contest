@@ -1,4 +1,4 @@
-package me.goldentrio
+package me.goldentrio.io
 
 import java.util.*
 

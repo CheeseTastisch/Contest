@@ -1,11 +1,25 @@
 package me.goldentrio
 
-import me.goldentrio.implementation.Contest as ContestImplementation
-import me.goldentrio.implementation.Configuration as ConfigurationImplementation
+import me.goldentrio.io.IO
+import me.goldentrio.io.IOImplementation
+import me.goldentrio.source.Sources
+import me.goldentrio.source.SourcesImplementation
 
+/**
+ * The [Contest] object is the main entry point for the library.
+ */
 object Contest {
 
-    operator fun invoke(config: Configuration.() -> Unit, solve: IO.() -> Unit) =
-        ContestImplementation(ConfigurationImplementation().apply(config)).call(solve)
+    /**
+     * Tries to solve the given [sources] with the given [solve] function.
+     */
+    operator fun invoke(sources: Sources.() -> Unit, solve: IO.() -> Unit) {
+        SourcesImplementation()
+            .apply(sources)
+            .sources
+            .forEach {
+                IOImplementation(it, solve)
+            }
+    }
 
 }
