@@ -7,7 +7,7 @@ import java.util.*
 
 internal class StringSource(
     private val inputString: String,
-    private val config: StringSourceConfiguration,
+    private val config: StringConfig,
 ) : Source {
 
     override val input: Deque<Deque<String>> =
@@ -49,7 +49,7 @@ internal class StringSource(
 
 }
 
-class StringSourceConfiguration {
+class StringConfig {
 
     var name: String? = null
 
@@ -63,6 +63,6 @@ class StringSourceConfiguration {
 
 }
 
-fun Sources.string(string: String, config: StringSourceConfiguration.() -> Unit = {}) {
-    +StringSource(string, StringSourceConfiguration().apply(config))
+fun Sources.string(string: String, config: StringConfig.() -> Unit = {}) {
+    +StringSource(string, StringConfig().apply(config))
 }
