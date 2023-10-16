@@ -3,13 +3,14 @@ package me.goldentrio.source.standard
 import me.goldentrio.source.Source
 import me.goldentrio.source.Sources
 import me.goldentrio.util.differ.Differnece
+import me.goldentrio.util.extention.path
 import java.io.File
 import java.nio.file.Path
 import java.util.*
 
 internal class FileSource(
     private val inputFile: File,
-    private val config: FileSourceConfiguration,
+    private val config: FileConfiguration,
 ) : Source {
 
     init {
@@ -33,36 +34,44 @@ internal class FileSource(
         outputFile.writeText(outputString)
 
         if (config.expected != null) {
-            println("""
+            println(
+                """
                 ------------ Task ${config.name ?: "unnamed"} ------------
                 > Input: ${inputFile.absolutePath}
-            """.trimIndent())
+            """.trimIndent()
+            )
             println()
             println(inputFile.readText())
 
-            println("""
+            println(
+                """
                 
                 > Output: ${outputFile.absolutePath}
-            """.trimIndent())
+            """.trimIndent()
+            )
             println(outputString)
 
-            println("""
+            println(
+                """
                 
                 > Expected: ${config.expected!!.absolutePath}
-            """.trimIndent())
+            """.trimIndent()
+            )
             println(config.expected!!.readLines().joinToString("\n"))
 
-            println("""
+            println(
+                """
                 
                 > Difference
-            """.trimIndent())
+            """.trimIndent()
+            )
             println(Differnece.getDifference(outputString, config.expected!!))
             println("------------------------------------------------------")
         }
     }
 }
 
-class FileSourceConfiguration {
+class FileConfiguration {
 
     var name: String? = null
 
@@ -75,33 +84,18 @@ class FileSourceConfiguration {
 
     var expected: File? = null
 
-    var expectedPath: Path?
-        get() = expected?.toPath()
-        set(value) {
-            expected = value?.toFile()
-        }
-
-}
-
-fun Sources.file(file: File, config: FileSourceConfiguration.() -> Unit = {}) {
-    +FileSource(file, FileSourceConfiguration().apply(config))
-}
-
-fun Sources.file(path: Path, config: FileSourceConfiguration.() -> Unit = {}) {
-    +FileSource(path.toFile(), FileSourceConfiguration().apply(config))
-}
-
-fun Sources.files(directory: File, config: FileSourceConfiguration.() -> Unit = {}) {
-    val configuration = FileSourceConfiguration().apply(config)
-
-    directory.listFiles()
-        ?.filter { it.isFile }
-        ?.filter { it.extension != configuration.outExtension }
-        ?.forEach {
-            +FileSource(it, configuration)
+    fun expected(path: Path) {
+        expected = path.toFile()
     }
+
+    fun expected(path: String) = expected(path.path)
+
 }
 
-fun Sources.files(directory: Path, config: FileSourceConfiguration.() -> Unit = {}) {
-    files(directory.toFile(), config)
+fun Sources.file(file: File, config: FileConfiguration.() -> Unit = {}) {
+    +FileSource(file, FileConfiguration().apply(config))
 }
+
+fun Sources.file(path: Path, config: FileConfiguration.() -> Unit = {}) = file(path.toFile(), config)
+
+fun Sources.file(path: String, config: FileConfiguration.() -> Unit = {}) = file(path.path, config)
