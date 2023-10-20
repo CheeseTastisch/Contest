@@ -4,15 +4,16 @@ plugins {
     kotlin("jvm") version "1.9.0"
 }
 
-group = "me.golendtrio"
-version = "1.0-SNAPSHOT"
-
 repositories {
     mavenCentral()
 }
 
 allprojects {
+    apply(plugin = "java")
     apply(plugin = "kotlin")
+
+    group = "me.golendtrio"
+    version = "1.0"
 
     repositories {
         mavenCentral()
