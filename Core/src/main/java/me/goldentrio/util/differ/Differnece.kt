@@ -15,8 +15,8 @@ internal object Differnece {
             "diff",
             "--color=always",
             "--no-index",
-            output.absolutePath,
-            expected.absolutePath
+            expected.absolutePath,
+            output.absolutePath
         ).start()
             .onExit()
             .join()

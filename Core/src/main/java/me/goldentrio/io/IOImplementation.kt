@@ -13,7 +13,9 @@ internal class IOImplementation(
     override val outputQueue: Deque<Deque<String>> = LinkedList()
 
     init {
+        filterEmptyInput()
         this.solve()
+        filterEmptyOutput()
         source.writeOutput(outputQueue)
     }
 
@@ -42,28 +44,48 @@ internal class IOImplementation(
         return outputQueue.peekLast()
     }
 
-    override fun writeLine(line: String) {
+    override fun writeLine(line: String, lineBreak: Boolean) {
         outputQueue.add(line.split(" ").toCollection(ArrayDeque()))
+        if (lineBreak) writeBreak()
     }
 
-    override fun writeValue(value: String) {
+    override fun writeValue(value: String, lineBreak: Boolean) {
         getCurrentLine().add(value)
+        if (lineBreak) writeBreak()
     }
 
-    override fun writeInt(value: Int) = writeValue(value.toString())
+    override fun writeInt(value: Int, lineBreak: Boolean) = writeValue(value.toString(), lineBreak)
 
-    override fun writeInts(vararg values: Int) = values.forEach { writeInt(it) }
+    override fun writeInts(vararg values: Int, lineBreak: Boolean) {
+        values.forEach { writeInt(it) }
+        if (lineBreak) writeBreak()
+    }
 
-    override fun writeDouble(value: Double) = writeValue(value.toString())
+    override fun writeDouble(value: Double, lineBreak: Boolean) = writeValue(value.toString(), lineBreak)
 
-    override fun writeDoubles(vararg values: Double) = values.forEach { writeDouble(it) }
+    override fun writeDoubles(vararg values: Double, lineBreak: Boolean) {
+        values.forEach { writeDouble(it) }
+        if (lineBreak) writeBreak()
+    }
 
     override fun writeBreak() {
         outputQueue.add(ArrayDeque())
     }
 
     override fun repeat() {
-        if (hasNextLine()) this.solve()
+        if (hasNextLine() && inputQueue.any { it.isNotEmpty() }) {
+            filterEmptyInput()
+            this.solve()
+        }
+    }
+
+    private fun filterEmptyInput() {
+        while (inputQueue.peek().isEmpty()) inputQueue.pop()
+    }
+
+    private fun filterEmptyOutput() {
+        while (outputQueue.peek().isEmpty()) outputQueue.pop()
+        while (outputQueue.peekLast().isEmpty()) outputQueue.removeLast()
     }
 
 

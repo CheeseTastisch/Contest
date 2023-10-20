@@ -76,37 +76,46 @@ interface IO {
 
     /**
      * Writes the given [line] to the output.
+     *
+     * This will break the current line and start a new one.
+     * If [lineBreak] is true, a line break will be added to the end of the line.
      */
-    fun writeLine(line: String)
+    fun writeLine(line: String, lineBreak: Boolean = false)
 
     /**
      * Writes the given [value] to the output.
+     *
+     * If [lineBreak] is true, a line break will be added to the end of the value.
      */
-    fun writeValue(value: String)
+    fun writeValue(value: String, lineBreak: Boolean = false)
 
     /**
      * Writes the given [Int] to the output.
+     *
+     * If [lineBreak] is true, a line break will be added to the end of the value.
      */
-    fun writeInt(value: Int)
+    fun writeInt(value: Int, lineBreak: Boolean = false)
 
     /**
      * Writes the given [Int]s to the output.
      *
-     * This does not write a line break.
+     * If [lineBreak] is true, a line break will be added to the end of the value.
      */
-    fun writeInts(vararg values: Int)
+    fun writeInts(vararg values: Int, lineBreak: Boolean = false)
 
     /**
      * Writes the given [Double] to the output.
+     *
+     * If [lineBreak] is true, a line break will be added to the end of the value.
      */
-    fun writeDouble(value: Double)
+    fun writeDouble(value: Double, lineBreak: Boolean = false)
 
     /**
      * Writes the given [Double]s to the output.
      *
-     * This does not write a line break.
+     * If [lineBreak] is true, a line break will be added to the end of the value.
      */
-    fun writeDoubles(vararg values: Double)
+    fun writeDoubles(vararg values: Double, lineBreak: Boolean = false)
 
     /**
      * Stops the current output line and starts a new one.
