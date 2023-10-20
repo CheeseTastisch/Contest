@@ -27,15 +27,20 @@ internal class IOImplementation(
         if (peek) inputQueue.peek().toList()
         else inputQueue.pop().toList()
 
-    override fun readValue(peek: Boolean): String =
-        if (peek) inputQueue.peek().peek()
+    override fun readValue(peek: Boolean, endOfLine: Boolean): String {
+        val value = if (peek) inputQueue.peek().peek()
         else inputQueue.peek().pop()
 
-    override fun readInt(peek: Boolean) = readValue(peek).toInt()
+        if (endOfLine) inputQueue.pop()
+
+        return value
+    }
+
+    override fun readInt(peek: Boolean, endOfLine: Boolean) = readValue(peek, endOfLine).toInt()
 
     override fun readInts(peek: Boolean) = readLine(peek).map { it.toInt() }
 
-    override fun readDouble(peek: Boolean) = readValue(peek).toDouble()
+    override fun readDouble(peek: Boolean, endOfLine: Boolean) = readValue(peek, endOfLine).toDouble()
 
     override fun readDoubles(peek: Boolean) = readLine(peek).map { it.toDouble() }
 

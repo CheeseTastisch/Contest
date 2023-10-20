@@ -35,15 +35,19 @@ interface IO {
      * Reads the next value from the input.
      *
      * If [peek] is true, the value will not be popped from the input.
+     *
+     * IF [endOfLine] is true, the rest of the line will be removed from the input.
      */
-    fun readValue(peek: Boolean = false): String
+    fun readValue(peek: Boolean = false, endOfLine: Boolean = false): String
 
     /**
      * Reads the next int from the input.
      *
      * If [peek] is true, the int will not be popped from the input.
+     *
+     * IF [endOfLine] is true, the rest of the line will be removed from the input.
      */
-    fun readInt(peek: Boolean = false): Int
+    fun readInt(peek: Boolean = false, endOfLine: Boolean = false): Int
 
     /**
      * Reads the next ints from the input (the rest of the line).
@@ -56,8 +60,10 @@ interface IO {
      * Reads the next double from the input.
      *
      * If [peek] is true, the double will not be popped from the input.
+     *
+     * IF [endOfLine] is true, the rest of the line will be removed from the input.
      */
-    fun readDouble(peek: Boolean = false): Double
+    fun readDouble(peek: Boolean = false, endOfLine: Boolean = false): Double
 
     /**
      * Reads the next doubles from the input (the rest of the line).
