@@ -1,0 +1,10 @@
+E,K,K,E E,H,H,H E,H,H,K E,H,K,K E,K,K,K E,K,K,H E,K,K,H E,K,K,H E,H,K,H E,E,H,K
+H,H,H,E null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null K,E,H,K
+K,H,K,E null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null K,E,H,K
+H,K,K,E null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null K,E,K,K
+H,K,K,E null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null H,E,K,H
+H,K,K,E null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null H,E,H,H
+H,H,K,E null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null K,E,K,H
+H,H,K,E null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null H,E,H,K
+H,K,K,E null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null null,null,null,null K,E,K,K
+H,K,E,E K,H,E,H H,H,E,K K,H,E,K K,K,E,K K,H,E,H H,K,E,K K,K,E,H K,K,E,H H,E,E,H
