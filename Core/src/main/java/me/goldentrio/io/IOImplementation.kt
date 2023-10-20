@@ -19,6 +19,10 @@ internal class IOImplementation(
         source.writeOutput(outputQueue)
     }
 
+    override fun readWholeLine(peek: Boolean) =
+        if (peek) inputQueue.peek().joinToString(" ")
+        else inputQueue.pop().joinToString(" ")
+
     override fun readLine(peek: Boolean) =
         if (peek) inputQueue.peek().toList()
         else inputQueue.pop().toList()
@@ -61,7 +65,8 @@ internal class IOImplementation(
         if (lineBreak) writeBreak()
     }
 
-    override fun writeDouble(value: Double, lineBreak: Boolean) = writeValue(value.toString(), lineBreak)
+    override fun writeDouble(value: Double, lineBreak: Boolean) =
+        writeValue(value.toString(), lineBreak)
 
     override fun writeDoubles(vararg values: Double, lineBreak: Boolean) {
         values.forEach { writeDouble(it) }

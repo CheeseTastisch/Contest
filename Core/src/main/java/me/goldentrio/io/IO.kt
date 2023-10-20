@@ -22,6 +22,13 @@ interface IO {
      *
      * If [peek] is true, the line will not be popped from the input.
      */
+    fun readWholeLine(peek: Boolean = false): String
+
+    /**
+     * Reads the next line from the input.
+     *
+     * If [peek] is true, the line will not be popped from the input.
+     */
     fun readLine(peek: Boolean = false): List<String>
 
     /**
