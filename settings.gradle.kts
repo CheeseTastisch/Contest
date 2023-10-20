@@ -12,3 +12,4 @@ plugins {
 rootProject.name = "Contest"
 include("Core")
 include("Test")
+include("CCC2023Autumn")

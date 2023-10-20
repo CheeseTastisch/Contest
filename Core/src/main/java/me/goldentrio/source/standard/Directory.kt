@@ -32,8 +32,8 @@ fun Sources.directory(directory: File, config: DirectoryConfiguration.() -> Unit
     directory.listFiles()
         ?.filter { it.isFile }
         ?.filter { it.extension != configuration.outExtension }
-        ?.forEach {
-            +FileSource(it, FileConfiguration().apply {
+        ?.forEach { file ->
+            +FileSource(file, FileConfiguration().apply {
                 valueSplit = configuration.valueSplit
 
                 lineJoin = configuration.lineJoin
@@ -41,8 +41,9 @@ fun Sources.directory(directory: File, config: DirectoryConfiguration.() -> Unit
 
                 outExtension = configuration.outExtension
 
-                expected = configuration.expectations[it.name]
-                    ?: configuration.expectations[it.nameWithoutExtension]
+                expected = (configuration.expectations[file.name]
+                    ?: configuration.expectations[file.nameWithoutExtension])
+                    ?.let { directory.resolve(it) }
             })
         }
 }
