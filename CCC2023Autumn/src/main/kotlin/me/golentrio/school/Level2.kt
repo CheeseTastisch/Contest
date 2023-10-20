@@ -2,6 +2,7 @@ package me.golentrio.school
 
 import me.goldentrio.Contest
 import me.goldentrio.source.standard.directory
+import me.goldentrio.util.extention.groupByCompare
 
 fun main() = Contest({
     directory("CCC2023Autumn/school/lvl2") {
@@ -25,7 +26,7 @@ fun main() = Contest({
 
     pieces
         .groupByCompare { first, second -> first.equalsIgnoreOrientation(second) }
-        .forEach { piece, list ->
+        .forEach { (piece, list) ->
             writeLine("${list.size} ${piece.top.type},${piece.right.type},${piece.bottom.type},${piece.left.type}")
         }
 }
