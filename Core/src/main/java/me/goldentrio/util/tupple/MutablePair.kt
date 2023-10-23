@@ -2,6 +2,9 @@ package me.goldentrio.util.tupple
 
 import java.io.Serializable
 
+/**
+ * A mutable pair of two values.
+ */
 data class MutablePair<A, B>(
     var first: A,
     var second: B
