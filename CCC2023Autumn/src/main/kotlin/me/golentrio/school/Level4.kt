@@ -3,20 +3,22 @@ package me.golentrio.school
 import me.goldentrio.Contest
 import me.goldentrio.source.standard.directory
 import me.goldentrio.source.standard.file
+import me.goldentrio.util.tupple.MutablePair
 
 fun main() = Contest({
-    file("CCC2023Autumn/school/lvl4/level4_example.in") {
-        expected("CCC2023Autumn/school/lvl4/level4_example.out")
+//    file("CCC2023Autumn/school/lvl4/level4_example.in") {
+//        expected("CCC2023Autumn/school/lvl4/level4_example.out")
+//    }
+    directory("CCC2023Autumn/school/lvl4") {
+        expected("level4_example.in", "level4_example.out")
     }
-//    directory("CCC2023Autumn/school/lvl4")
 }) {
     val pieces = readInt()
     readLine()
 
     val allowedPieces = mutableListOf<Piece>()
     for (i in 0..<pieces) {
-        val line = readValue().split(",")
-        readLine()
+        val line = readWholeLine().split(",")
         allowedPieces.add(
             Piece(
                 Type.byType(line[0][0]),
@@ -27,8 +29,7 @@ fun main() = Contest({
         )
     }
 
-    val size = readInt()
-    readLine()
+    val size = readInt(endOfLine = true)
 
     val puzzle = mutableListOf<MutableList<Piece?>>()
     puzzle.add(mutableListOf())
@@ -70,14 +71,14 @@ fun main() = Contest({
             )
         }
 
-        if (hasNextLine()) readLine()
-        puzzle.add(mutableListOf())
+        if (hasNextLine()) {
+            readLine()
+            puzzle.add(mutableListOf())
+        }
     }
-    puzzle.removeLast()
+    if (puzzle.last().isEmpty()) puzzle.removeLast()
 
-    println(puzzle)
-
-    solvePuzzle(1, 1, puzzle, allowedPieces)
+    bruteForce(size, puzzle, allowedPieces.map { MutablePair(it, true) })
 
     puzzle.forEach { row ->
         row.forEach {
@@ -87,49 +88,54 @@ fun main() = Contest({
     }
 }
 
-fun solvePuzzle(row: Int, col: Int, puzzle: MutableList<MutableList<Piece?>>, remainingPieces: MutableList<Piece>): Boolean {
-    if (row == puzzle.size) return true
+fun bruteForce(
+    size: Int,
+    puzzle: MutableList<MutableList<Piece?>>,
+    allowed: List<MutablePair<Piece, Boolean>>,
+    row: Int = 0,
+    col: Int = 0,
+): Boolean {
+    if (row == size && col == 0) return true
 
-    val nextRow = if (col == puzzle[row].size - 1) row + 1 else row
-    val nextCol = if (col == puzzle[row].size - 1) 0 else col + 1
+    val nextRow = if (col == size - 1) row + 1 else row
+    val nextCol = if (col == size - 1) 0 else col + 1
 
-    if (puzzle[row][col] != null) return solvePuzzle(nextRow, nextCol, puzzle, remainingPieces)
+    if (puzzle[row][col] != null) return bruteForce(size, puzzle, allowed, nextRow, nextCol)
 
-    for (piece in remainingPieces.toMutableList()) {
-        if (fits(row, col, piece, puzzle)) {
-            puzzle[row][col] = piece
-            remainingPieces.remove(piece)
+    val tried = mutableListOf<Piece>()
+    for (piece in allowed) {
+        if (!piece.second) continue
 
-            if (solvePuzzle(nextRow, nextCol, puzzle, remainingPieces)) return true
+        puzzle[row][col] = piece.first
+        piece.second = false
 
-            puzzle[row][col] = null
-            remainingPieces.add(piece)
+        repeat(4) {
+            piece.first.rotate()
+
+            if (piece.first in tried) return@repeat
+
+            if (fits(row, col, piece.first, puzzle) && bruteForce(size, puzzle, allowed, nextRow, nextCol)) return true
+            else tried.add(piece.first.copy())
         }
+
+        puzzle[row][col] = null
+        piece.second = true
     }
 
     return false
 }
 
+
 fun fits(row: Int, col: Int, piece: Piece, puzzle: MutableList<MutableList<Piece?>>): Boolean {
-    if (piece.top != Type.EDGE) {
-        val above = puzzle[row - 1][col]
-        if (above != null && above.bottom == piece.top) return false
-    }
+    val above = puzzle.getOrNull(row - 1)?.getOrNull(col)
+    if (above != null && !above.bottom.fits(piece.top)) return false
 
-    if (piece.right != Type.EDGE) {
-        val right = puzzle[row][col + 1]
-        if (right != null && right.left == piece.right) return false
-    }
+    val right = puzzle.getOrNull(row)?.getOrNull(col + 1)
+    if (right != null && !right.left.fits(piece.right)) return false
 
-    if (piece.bottom != Type.EDGE) {
-        val below = puzzle[row + 1][col]
-        if (below != null && below.top == piece.bottom) return false
-    }
+    val below = puzzle.getOrNull(row + 1)?.getOrNull(col)
+    if (below != null && !below.top.fits(piece.bottom)) return false
 
-    if (piece.left != Type.EDGE) {
-        val left = puzzle[row][col - 1]
-        if (left != null && left.right == piece.left) return false
-    }
-
-    return true
+    val left = puzzle.getOrNull(row)?.getOrNull(col - 1)
+    return !(left != null && !left.right.fits(piece.left))
 }
