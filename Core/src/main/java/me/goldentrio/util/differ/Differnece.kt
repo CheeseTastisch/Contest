@@ -13,6 +13,8 @@ internal object Differnece {
         val process = ProcessBuilder(
             "git",
             "diff",
+            "--ignore-space-change",
+            "--word-diff=porcelain",
             "--color=always",
             "--no-index",
             expected.absolutePath,
