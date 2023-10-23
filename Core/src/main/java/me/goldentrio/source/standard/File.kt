@@ -2,7 +2,7 @@ package me.goldentrio.source.standard
 
 import me.goldentrio.source.Source
 import me.goldentrio.source.Sources
-import me.goldentrio.util.differ.Differnece
+import me.goldentrio.util.differ.Difference
 import me.goldentrio.util.extention.path
 import java.io.File
 import java.nio.file.Path
@@ -65,7 +65,7 @@ internal class FileSource(
                 > Difference
             """.trimIndent()
             )
-            println(Differnece.getDifference(outputString, config.expected!!))
+            println(Difference.getDifference(outputString, config.expected!!))
             println("------------------------------------------------------")
         }
     }

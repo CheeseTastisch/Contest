@@ -2,7 +2,7 @@ package me.goldentrio.source.standard
 
 import me.goldentrio.source.Source
 import me.goldentrio.source.Sources
-import me.goldentrio.util.differ.Differnece
+import me.goldentrio.util.differ.Difference
 import java.util.*
 
 internal class StringSource(
@@ -42,7 +42,7 @@ internal class StringSource(
                 
                 > Difference
             """.trimMargin())
-            println(Differnece.getDifference(outputString, config.expected!!))
+            println(Difference.getDifference(outputString, config.expected!!))
         }
         println("------------------------------------------------------")
     }
