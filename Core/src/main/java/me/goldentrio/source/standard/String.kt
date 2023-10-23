@@ -28,7 +28,7 @@ internal class StringSource(
         println("""
                 
                 > Output
-            """.trimMargin())
+            """.trimIndent())
         println(outputString)
 
         if (config.expected != null) {
@@ -41,7 +41,7 @@ internal class StringSource(
             println("""
                 
                 > Difference
-            """.trimMargin())
+            """.trimIndent())
             println(Difference.getDifference(outputString, config.expected!!))
         }
         println("------------------------------------------------------")
