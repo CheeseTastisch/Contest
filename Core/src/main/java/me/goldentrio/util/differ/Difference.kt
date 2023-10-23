@@ -3,7 +3,7 @@ package me.goldentrio.util.differ
 import me.goldentrio.util.extention.random
 import java.io.File
 
-internal object Differnece {
+internal object Difference {
 
     @Suppress("MemberVisibilityCanBePrivate")
     fun getDifference(output: File, expected: File): String {
