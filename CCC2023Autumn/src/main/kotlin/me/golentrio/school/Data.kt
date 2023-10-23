@@ -1,7 +1,5 @@
 package me.golentrio.school
 
-import java.util.UUID
-
 data class Piece(
     var top: Type,
     var right: Type,
@@ -33,15 +31,23 @@ enum class Type(val type: Char) {
 
     KNOB('K') {
         override fun invert() = HOLE
+
+        override fun fits(other: Type) = other == HOLE
     },
     HOLE('H') {
         override fun invert() = KNOB
+
+        override fun fits(other: Type) = other == KNOB
     },
     EDGE('E') {
         override fun invert() = EDGE
+
+        override fun fits(other: Type) = other == EDGE
     };
 
     abstract fun invert(): Type
+
+    abstract fun fits(other: Type): Boolean
 
     override fun toString(): String {
         return type.toString()
