@@ -51,18 +51,41 @@ internal class StringSource(
 
 class StringConfig {
 
+    /**
+     * The name of the task.
+     */
     var name: String? = null
 
+    /**
+     * The [String] used to split lines.
+     */
     var lineSplit = "\n"
+
+    /**
+     * The [String] used to split values of a line.
+     */
     var valueSplit = " "
 
-    var lineJoin = "\n"
+    /**
+     * The [String] used to join to values when writing the output.
+     */
     var valueJoin = " "
 
+    /**
+     * The [String] used to join lines when writing the output.
+     */
+    var lineJoin = "\n"
+
+    /**
+     * The expected output.
+     */
     var expected: String? = null
 
 }
 
+/**
+ * Adds a [StringSource] to the [Sources].
+ */
 fun Sources.string(string: String, config: StringConfig.() -> Unit = {}) {
     +StringSource(string, StringConfig().apply(config))
 }

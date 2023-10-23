@@ -71,31 +71,68 @@ internal class FileSource(
     }
 }
 
+/**
+ * The configuration for a [FileSource].
+ */
 class FileConfiguration {
 
+    /**
+     * The name of the task.
+     */
     var name: String? = null
 
+    /**
+     * The [String] used to split values of a line.
+     */
     var valueSplit = " "
 
-    var lineJoin = "\n"
+    /**
+     * The [String] used to join to values when writing the output.
+     */
     var valueJoin = " "
 
+    /**
+     * The [String] used to join lines when writing the output.
+     */
+    var lineJoin = "\n"
+
+    /**
+     * The extension of the output file.
+     */
     var outExtension = "out"
 
+    /**
+     * The expected output file (compares the content of the output file with this file).
+     */
     var expected: File? = null
 
+    /**
+     * Sets the expected output file.
+     */
     fun expected(path: Path) {
         expected = path.toFile()
     }
 
+    /**
+     * Sets the expected output file.
+     */
     fun expected(path: String) = expected(path.path)
 
 }
 
+/**
+ * Adds a [FileSource] to the [Sources].
+ */
 fun Sources.file(file: File, config: FileConfiguration.() -> Unit = {}) {
     +FileSource(file, FileConfiguration().apply(config))
 }
 
+/**
+ * Adds a [FileSource] to the [Sources].
+ */
 fun Sources.file(path: Path, config: FileConfiguration.() -> Unit = {}) = file(path.toFile(), config)
 
+/**
+ * Adds a [FileSource] to the [Sources].
+ */
 fun Sources.file(path: String, config: FileConfiguration.() -> Unit = {}) = file(path.path, config)
