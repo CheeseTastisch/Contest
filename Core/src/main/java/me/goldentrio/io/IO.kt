@@ -18,30 +18,6 @@ interface IO {
     val outputQueue: Deque<Deque<String>>
 
     /**
-     * Reads the next line from the input.
-     *
-     * If [peek] is set, the line will be kept in the [inputQueue].
-     */
-    @Deprecated(
-        "Use readValues with join instead",
-        ReplaceWith("readValues(peek).joinToString(separator)"),
-        level = DeprecationLevel.WARNING
-    )
-    fun readWholeLine(peek: Boolean = false): String
-
-    /**
-     * Reads the next line from the input
-     *
-     * If [peek] is set, the line will be kept in the [inputQueue].
-     */
-    @Deprecated(
-        "Use readValues instead",
-        ReplaceWith("readValues(peek)"),
-        level = DeprecationLevel.WARNING
-    )
-    fun readLine(peek: Boolean = false): List<String>
-
-    /**
      * Reads the next value from the input.
      *
      * If [peek] is set, the value will be kept in the [inputQueue].
@@ -183,23 +159,6 @@ interface IO {
     fun getCurrentLine(): Deque<String>
 
     /**
-     * Writes the given [line] to the output.
-     *
-     * If [append] is set, the line will be appended to the current output line.
-     * If [lineBreak] is set, this will be the last value of the line.
-     */
-    @Deprecated(
-        "Use writeLine with vararg instead",
-        ReplaceWith("writeValue(*line.split(\" \").toTypedArray(), append = append, lineBreak = lineBreak)"),
-        level = DeprecationLevel.WARNING
-    )
-    fun writeLine(
-        line: String,
-        append: Boolean = false,
-        lineBreak: Boolean = false
-    )
-
-    /**
      * Writes the given [values] to the output.
      * This will map all values to [String]s, by calling there `toString` function.
      *
@@ -224,64 +183,6 @@ interface IO {
         append: Boolean = true,
         lineBreak: Boolean = false,
     ) = writeValue(*values.toTypedArray(), append = append, lineBreak = lineBreak)
-
-    /**
-     * Writes the given [Int] to the output.
-     *
-     * If [lineBreak] is true, a line break will be added to the end of the value.
-     */
-    @Deprecated(
-        "Use writeValue instead",
-        ReplaceWith("writeValue(value, lineBreak = lineBreak)"),
-        level = DeprecationLevel.WARNING
-    )
-    fun writeInt(value: Int, lineBreak: Boolean = false)
-
-    /**
-     * Writes the given [Int]s to the output.
-     *
-     * If [lineBreak] is true, a line break will be added to the end of the value.
-     */
-    @Deprecated(
-        "Use writeValue instead",
-        ReplaceWith("writeValue(*values.toTypedArray(), lineBreak = lineBreak)"),
-        level = DeprecationLevel.WARNING
-    )
-    fun writeInts(vararg values: Int, lineBreak: Boolean = false)
-
-    /**
-     * Writes the given [Double] to the output.
-     *
-     * If [lineBreak] is true, a line break will be added to the end of the value.
-     */
-    @Deprecated(
-        "Use writeValue instead",
-        ReplaceWith("writeValue(value, lineBreak = lineBreak)"),
-        level = DeprecationLevel.WARNING
-    )
-    fun writeDouble(value: Double, lineBreak: Boolean = false)
-
-    /**
-     * Writes the given [Double]s to the output.
-     *
-     * If [lineBreak] is true, a line break will be added to the end of the value.
-     */
-    @Deprecated(
-        "Use writeValue instead",
-        ReplaceWith("writeValue(*values.toTypedArray(), lineBreak = lineBreak)"),
-        level = DeprecationLevel.WARNING
-    )
-    fun writeDoubles(vararg values: Double, lineBreak: Boolean = false)
-
-    /**
-     * Stops the current output line and starts a new one.
-     */
-    @Deprecated(
-        "Use writeValue instead",
-        ReplaceWith("writeValue(lineBreak = true)"),
-        level = DeprecationLevel.WARNING
-    )
-    fun writeBreak()
 
     /**
      * Calls the solve function again for the rest of the input.
