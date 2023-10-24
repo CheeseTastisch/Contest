@@ -32,5 +32,5 @@ fun main() = Contest({
     val fix = if (startValue + endValue == 1) 1 else -1
     for (i in range) output[i] = input[endIndex - i + startIndex - fix] * -1
 
-    writeInts(*output.toIntArray())
+    writeValue(output)
 }

@@ -34,9 +34,6 @@ fun main() = Contest({
         }
     }
 
-    writeInt(orientedPairs.size)
-
-    orientedPairs
-        .sortedBy { it.first }
-        .forEach { writeInts(it.first, it.second) }
+    writeValue(orientedPairs.size)
+    writeValue(orientedPairs.sortedBy { it.first })
 }

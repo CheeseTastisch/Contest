@@ -2,35 +2,30 @@ package me.golentrio.classic
 
 import me.goldentrio.Contest
 import me.goldentrio.source.standard.directory
-import me.goldentrio.source.standard.file
 
 fun main() = Contest({
     directory("CCC2023Autumn/classic/lvl2") {
         outExtension = "validator"
         expected("level2_example.in", "level2_example.validator")
     }
-//    file("CCC2023Autumn/classic/lvl2/level2_example.in") {
-//        outExtension = "validator"
-//        expected("CCC2023Autumn/classic/lvl2/level2_example.validator")
-//    }
 }) {
     val size = readInt(endOfLine = true)
 
     val map = mutableListOf<MutableList<Type>>()
     for (i in 0..<size) {
-        map.add(mutableListOf(*readWholeLine().map { Type.byChar(it) }.toTypedArray()))
+        map.add(readValue(endOfLine = true).map { Type.byChar(it) }.toMutableList())
     }
 
-    readLine()
+    readValue(endOfLine = true)
 
     while (hasNextLine()) {
-        val (p1, p2) = readWholeLine()
-            .split(" ")
+        val (p1, p2) = readValues()
             .map {
                 it.split(",")
                     .map { point -> point.toInt() }
                     .let { (x, y) -> x to y }
             }
+
         writeValue(
             if (isOnSameIsland(p1, p2, map)) "SAME"
             else "DIFFERENT",

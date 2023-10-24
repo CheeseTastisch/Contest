@@ -213,6 +213,19 @@ interface IO {
     )
 
     /**
+     * Writes the given [values] to the output.
+     * This will map all values to [String]s, by calling there `toString` function.
+     *
+     * If [append] is set, the value will be appended to the current output line.
+     * If [lineBreak] is set, this will be the last value of the line.
+     */
+    fun writeValue(
+        values: List<Any>,
+        append: Boolean = true,
+        lineBreak: Boolean = false,
+    ) = writeValue(*values.toTypedArray(), append = append, lineBreak = lineBreak)
+
+    /**
      * Writes the given [Int] to the output.
      *
      * If [lineBreak] is true, a line break will be added to the end of the value.

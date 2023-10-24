@@ -2,23 +2,18 @@ package me.golentrio.school
 
 import me.goldentrio.Contest
 import me.goldentrio.source.standard.directory
-import me.goldentrio.source.standard.file
 import me.goldentrio.util.tupple.MutablePair
 
 fun main() = Contest({
-//    file("CCC2023Autumn/school/lvl4/level4_example.in") {
-//        expected("CCC2023Autumn/school/lvl4/level4_example.out")
-//    }
     directory("CCC2023Autumn/school/lvl4") {
         expected("level4_example.in", "level4_example.out")
     }
 }) {
-    val pieces = readInt()
-    readLine()
+    val pieces = readInt(endOfLine = true)
 
     val allowedPieces = mutableListOf<Piece>()
     for (i in 0..<pieces) {
-        val line = readWholeLine().split(",")
+        val line = readValue(endOfLine = true).split(",")
         allowedPieces.add(
             Piece(
                 Type.byType(line[0][0]),
@@ -72,7 +67,7 @@ fun main() = Contest({
         }
 
         if (hasNextLine()) {
-            readLine()
+            readValues()
             puzzle.add(mutableListOf())
         }
     }
@@ -81,10 +76,8 @@ fun main() = Contest({
     bruteForce(size, puzzle, allowedPieces.map { MutablePair(it, true) })
 
     puzzle.forEach { row ->
-        row.forEach {
-            writeValue("${it?.top},${it?.right},${it?.bottom},${it?.left}")
-        }
-        writeBreak()
+        row.forEach { writeValue("${it?.top},${it?.right},${it?.bottom},${it?.left}") }
+        writeValue(lineBreak = true)
     }
 }
 

@@ -19,8 +19,8 @@ fun main() = Contest({
     string("567629137")
     string("46216567629137")
 }) {
-    val number = readValue().toLong()
-    writeInt(getDeletablePrimes(number))
+    val number = readLong()
+    writeValue(getDeletablePrimes(number))
 }
 
 private fun getDeletablePrimes(number: Long): Int {
