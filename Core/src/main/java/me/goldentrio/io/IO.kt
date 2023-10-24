@@ -20,57 +20,152 @@ interface IO {
     /**
      * Reads the next line from the input.
      *
-     * If [peek] is true, the line will not be popped from the input.
+     * If [peek] is set, the line will be kept in the [inputQueue].
      */
+    @Deprecated(
+        "Use readValues with join instead",
+        ReplaceWith("readValues(peek).joinToString(separator)"),
+        level = DeprecationLevel.WARNING
+    )
     fun readWholeLine(peek: Boolean = false): String
 
     /**
-     * Reads the next line from the input.
+     * Reads the next line from the input
      *
-     * If [peek] is true, the line will not be popped from the input.
+     * If [peek] is set, the line will be kept in the [inputQueue].
      */
+    @Deprecated(
+        "Use readValues instead",
+        ReplaceWith("readValues(peek)"),
+        level = DeprecationLevel.WARNING
+    )
     fun readLine(peek: Boolean = false): List<String>
 
     /**
      * Reads the next value from the input.
      *
-     * If [peek] is true, the value will not be popped from the input.
+     * If [peek] is set, the value will be kept in the [inputQueue].
+     * If [endOfLine] is set, the whole line will be removed from the [inputQueue].
      *
-     * IF [endOfLine] is true, the rest of the line will be removed from the input.
+     * @throws IllegalArgumentException if [peek] and [endOfLine] are both set.
      */
+    @Throws(IllegalArgumentException::class)
     fun readValue(peek: Boolean = false, endOfLine: Boolean = false): String
 
     /**
-     * Reads the next int from the input.
+     * Reads the next value from the input and parses it to an [Byte].
      *
-     * If [peek] is true, the int will not be popped from the input.
+     * If [peek] is set, the value will be kept in the [inputQueue].
+     * If [endOfLine] is set, the whole line will be removed from the [inputQueue].
      *
-     * IF [endOfLine] is true, the rest of the line will be removed from the input.
+     * @throws IllegalArgumentException if [peek] and [endOfLine] are both set.
      */
-    fun readInt(peek: Boolean = false, endOfLine: Boolean = false): Int
+    @Throws(IllegalArgumentException::class)
+    fun readByte(peek: Boolean = false, endOfLine: Boolean = false) = readValue(peek, endOfLine).toByte()
 
     /**
-     * Reads the next ints from the input (the rest of the line).
+     * Reads the next value from the input and parses it to an [Short].
      *
-     * If [peek] is true, the ints will not be popped from the input.
+     * If [peek] is set, the value will be kept in the [inputQueue].
+     * If [endOfLine] is set, the whole line will be removed from the [inputQueue].
+     *
+     * @throws IllegalArgumentException if [peek] and [endOfLine] are both set.
      */
-    fun readInts(peek: Boolean = false): List<Int>
+    @Throws(IllegalArgumentException::class)
+    fun readShort(peek: Boolean = false, endOfLine: Boolean = false) = readValue(peek, endOfLine).toShort()
 
     /**
-     * Reads the next double from the input.
+     * Reads the next value from the input and parses it to an [Int].
      *
-     * If [peek] is true, the double will not be popped from the input.
+     * If [peek] is set, the value will be kept in the [inputQueue].
+     * If [endOfLine] is set, the whole line will be removed from the [inputQueue].
      *
-     * IF [endOfLine] is true, the rest of the line will be removed from the input.
+     * @throws IllegalArgumentException if [peek] and [endOfLine] are both set.
      */
-    fun readDouble(peek: Boolean = false, endOfLine: Boolean = false): Double
+    @Throws(IllegalArgumentException::class)
+    fun readInt(peek: Boolean = false, endOfLine: Boolean = false) = readValue(peek, endOfLine).toInt()
 
     /**
-     * Reads the next doubles from the input (the rest of the line).
+     * Reads the next value from the input and parses it to an [Long].
      *
-     * If [peek] is true, the doubles will not be popped from the input.
+     * If [peek] is set, the value will be kept in the [inputQueue].
+     * If [endOfLine] is set, the whole line will be removed from the [inputQueue].
+     *
+     * @throws IllegalArgumentException if [peek] and [endOfLine] are both set.
      */
-    fun readDoubles(peek: Boolean = false): List<Double>
+    @Throws(IllegalArgumentException::class)
+    fun readLong(peek: Boolean = false, endOfLine: Boolean = false) = readValue(peek, endOfLine).toLong()
+
+    /**
+     * Reads the next value from the input and parses it to an [Float].
+     *
+     * If [peek] is set, the value will be kept in the [inputQueue].
+     * If [endOfLine] is set, the whole line will be removed from the [inputQueue].
+     *
+     * @throws IllegalArgumentException if [peek] and [endOfLine] are both set.
+     */
+    @Throws(IllegalArgumentException::class)
+    fun readFloat(peek: Boolean = false, endOfLine: Boolean = false) = readValue(peek, endOfLine).toFloat()
+
+    /**
+     * Reads the next value from the input and parses it to an [Double].
+     *
+     * If [peek] is set, the value will be kept in the [inputQueue].
+     * If [endOfLine] is set, the whole line will be removed from the [inputQueue].
+     *
+     * @throws IllegalArgumentException if [peek] and [endOfLine] are both set.
+     */
+    @Throws(IllegalArgumentException::class)
+    fun readDouble(peek: Boolean = false, endOfLine: Boolean = false) = readValue(peek, endOfLine).toDouble()
+
+    /**
+     * Reads the next line from the input.
+     *
+     * If [peek] is set, the line will be kept in the [inputQueue].
+     */
+    fun readValues(peek: Boolean = false): List<String>
+
+    /**
+     * Reads the next line from the input and parses its values to [Byte]s.
+     *
+     * If [peek] is set, the line will be kept in the [inputQueue].
+     */
+    fun readBytes(peek: Boolean = false) = readValues(peek).map { it.toByte() }
+
+    /**
+     * Reads the next line from the input and parses its values to [Short]s.
+     *
+     * If [peek] is set, the line will be kept in the [inputQueue].
+     */
+    fun readShorts(peek: Boolean = false) = readValues(peek).map { it.toShort() }
+
+    /**
+     * Reads the next line from the input and parses its values to [Int]s.
+     *
+     * If [peek] is set, the line will be kept in the [inputQueue].
+     */
+    fun readInts(peek: Boolean = false) = readValues(peek).map { it.toInt() }
+
+    /**
+     * Reads the next line from the input and parses its values to [Long]s.
+     *
+     * If [peek] is set, the line will be kept in the [inputQueue].
+     */
+    fun readLongs(peek: Boolean = false) = readValues(peek).map { it.toLong() }
+
+    /**
+     * Reads the next line from the input and parses its values to [Float]s.
+     *
+     * If [peek] is set, the line will be kept in the [inputQueue].
+     */
+    fun readFloats(peek: Boolean = false) = readValues(peek).map { it.toFloat() }
+
+    /**
+     * Reads the next line from the input and parses its values to [Double]s.
+     *
+     * If [peek] is set, the line will be kept in the [inputQueue].
+     */
+    fun readDoubles(peek: Boolean = false) = readValues(peek).map { it.toDouble() }
 
     /**
      * Checks if the input has a next line.
@@ -90,23 +185,43 @@ interface IO {
     /**
      * Writes the given [line] to the output.
      *
-     * This will break the current line and start a new one.
-     * If [lineBreak] is true, a line break will be added to the end of the line.
+     * If [append] is set, the line will be appended to the current output line.
+     * If [lineBreak] is set, this will be the last value of the line.
      */
-    fun writeLine(line: String, lineBreak: Boolean = false)
+    @Deprecated(
+        "Use writeLine with vararg instead",
+        ReplaceWith("writeValue(*line.split(\" \").toTypedArray(), append = append, lineBreak = lineBreak)"),
+        level = DeprecationLevel.WARNING
+    )
+    fun writeLine(
+        line: String,
+        append: Boolean = false,
+        lineBreak: Boolean = false
+    )
 
     /**
-     * Writes the given [value] to the output.
+     * Writes the given [values] to the output.
+     * This will map all values to [String]s, by calling there `toString` function.
      *
-     * If [lineBreak] is true, a line break will be added to the end of the value.
+     * If [append] is set, the value will be appended to the current output line.
+     * If [lineBreak] is set, this will be the last value of the line.
      */
-    fun writeValue(value: String, lineBreak: Boolean = false)
+    fun writeValue(
+        vararg values: Any = emptyArray(),
+        append: Boolean = true,
+        lineBreak: Boolean = false,
+    )
 
     /**
      * Writes the given [Int] to the output.
      *
      * If [lineBreak] is true, a line break will be added to the end of the value.
      */
+    @Deprecated(
+        "Use writeValue instead",
+        ReplaceWith("writeValue(value, lineBreak = lineBreak)"),
+        level = DeprecationLevel.WARNING
+    )
     fun writeInt(value: Int, lineBreak: Boolean = false)
 
     /**
@@ -114,6 +229,11 @@ interface IO {
      *
      * If [lineBreak] is true, a line break will be added to the end of the value.
      */
+    @Deprecated(
+        "Use writeValue instead",
+        ReplaceWith("writeValue(*values.toTypedArray(), lineBreak = lineBreak)"),
+        level = DeprecationLevel.WARNING
+    )
     fun writeInts(vararg values: Int, lineBreak: Boolean = false)
 
     /**
@@ -121,6 +241,11 @@ interface IO {
      *
      * If [lineBreak] is true, a line break will be added to the end of the value.
      */
+    @Deprecated(
+        "Use writeValue instead",
+        ReplaceWith("writeValue(value, lineBreak = lineBreak)"),
+        level = DeprecationLevel.WARNING
+    )
     fun writeDouble(value: Double, lineBreak: Boolean = false)
 
     /**
@@ -128,17 +253,27 @@ interface IO {
      *
      * If [lineBreak] is true, a line break will be added to the end of the value.
      */
+    @Deprecated(
+        "Use writeValue instead",
+        ReplaceWith("writeValue(*values.toTypedArray(), lineBreak = lineBreak)"),
+        level = DeprecationLevel.WARNING
+    )
     fun writeDoubles(vararg values: Double, lineBreak: Boolean = false)
 
     /**
      * Stops the current output line and starts a new one.
      */
+    @Deprecated(
+        "Use writeValue instead",
+        ReplaceWith("writeValue(lineBreak = true)"),
+        level = DeprecationLevel.WARNING
+    )
     fun writeBreak()
 
     /**
      * Calls the solve function again for the rest of the input.
      *
-     * If no input is left, the solve function will not be called again.
+     * If [hasNextLine] is `false`, the solve function will not be called again.
      */
     fun repeat()
 
