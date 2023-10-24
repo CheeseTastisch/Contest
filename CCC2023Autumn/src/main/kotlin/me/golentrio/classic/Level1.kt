@@ -2,7 +2,6 @@ package me.golentrio.classic
 
 import me.goldentrio.Contest
 import me.goldentrio.source.standard.directory
-import me.goldentrio.source.standard.file
 
 fun main() = Contest({
     directory("CCC2023Autumn/classic/lvl1") {
@@ -14,13 +13,13 @@ fun main() = Contest({
 
     val map = mutableListOf<MutableList<Type>>()
     for (i in 0..<size) {
-        map.add(mutableListOf(*readWholeLine().map { Type.byChar(it) }.toTypedArray()))
+        map.add(readValue(endOfLine = true).map { Type.byChar(it) }.toMutableList())
     }
 
-    readLine()
+    readValue(endOfLine = true)
 
     while (hasNextLine()) {
-        val (x, y) = readWholeLine().split(",").map { it.toInt() }
+        val (x, y) = readValue(endOfLine = true).split(",").map { it.toInt() }
         writeValue(map[y][x].char.toString(), lineBreak = true)
     }
 }

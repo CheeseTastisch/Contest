@@ -28,7 +28,7 @@ fun main() = Contest({
         steps++
     }
 
-    writeInt(steps)
+    writeValue(steps)
 }
 
 private fun findOrientedPairs(permutation: List<Int>): List<OrientedPair> {

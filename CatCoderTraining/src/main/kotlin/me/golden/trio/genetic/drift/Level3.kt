@@ -46,5 +46,5 @@ fun main() = Contest({
         }
     }
 
-    writeInt(orientedPairs.size)
+    writeValue(orientedPairs.size)
 }

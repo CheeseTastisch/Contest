@@ -9,12 +9,11 @@ fun main() = Contest({
         expected("level2_example.in", "level2_example.out")
     }
 }) {
-    val lines = readInt()
-    readLine()
+    readValue(endOfLine = true)
 
     val pieces = mutableListOf<Piece>()
     while (hasNextLine()) {
-        val line = readWholeLine().split(",")
+        val line = readValue(endOfLine = true).split(",")
         pieces.add(
             Piece(
                 Type.byType(line[0][0]),
@@ -27,6 +26,6 @@ fun main() = Contest({
     pieces
         .groupByCompare { first, second -> first.equalsIgnoreOrientation(second) }
         .forEach { (piece, list) ->
-            writeLine("${list.size} ${piece.top.type},${piece.right.type},${piece.bottom.type},${piece.left.type}")
+            writeValue(list.size, "${piece.top.type},${piece.right.type},${piece.bottom.type},${piece.left.type}")
         }
 }

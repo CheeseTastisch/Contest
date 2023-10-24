@@ -2,7 +2,6 @@ package me.golentrio.school
 
 import me.goldentrio.Contest
 import me.goldentrio.source.standard.directory
-import me.goldentrio.source.standard.file
 
 fun main() = Contest({
     directory("CCC2023Autumn/school/lvl3") {
@@ -10,7 +9,7 @@ fun main() = Contest({
         expected("level3_example.in", "level3_example.out")
     }
 }) {
-    readLine()
+    readValues()
 
     val puzzle = mutableListOf<MutableList<Piece>>()
     puzzle.add(mutableListOf())
@@ -29,7 +28,7 @@ fun main() = Contest({
         }
 
         puzzle.add(mutableListOf())
-        if (hasNextLine()) readLine()
+        if (hasNextLine()) readValues()
     }
 
     for (i in puzzle.indices) {
@@ -49,9 +48,7 @@ fun main() = Contest({
     }
 
     puzzle.forEach { row ->
-        row.forEach {
-            writeValue("${it.top},${it.right},${it.bottom},${it.left}")
-        }
-        writeBreak()
+        row.forEach { writeValue("${it.top},${it.right},${it.bottom},${it.left}") }
+        writeValue(lineBreak = true)
     }
 }

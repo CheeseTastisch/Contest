@@ -2,30 +2,24 @@ package me.golentrio.classic
 
 import me.goldentrio.Contest
 import me.goldentrio.source.standard.directory
-import me.goldentrio.source.standard.file
 
 fun main() = Contest({
     directory("CCC2023Autumn/classic/lvl4") {
         outExtension = "validator"
         expected("level4_example.in", "level4_example.validator")
     }
-//    file("CCC2023Autumn/classic/lvl4/level4_example.in") {
-//        outExtension = "validator"
-//        expected("CCC2023Autumn/classic/lvl4/level4_example.validator")
-//    }
 }) {
     val size = readInt(endOfLine = true)
 
     val map = mutableListOf<MutableList<Type>>()
     for (i in 0..<size) {
-        map.add(mutableListOf(*readWholeLine().map { Type.byChar(it) }.toTypedArray()))
+        map.add(readValue(endOfLine = true).map { Type.byChar(it) }.toMutableList())
     }
 
-    readLine()
+    readValue(endOfLine = true)
 
     while (hasNextLine()) {
-        val (p1, p2) = readWholeLine()
-            .split(" ")
+        val (p1, p2) = readValues()
             .map {
                 it.split(",")
                     .map { point -> point.toInt() }
@@ -33,7 +27,7 @@ fun main() = Contest({
             }
 
         getRoute(size, p1, p2, map).forEach { (x, y) -> writeValue("$x,$y") }
-        writeBreak()
+        writeValue(lineBreak = true)
     }
 }
 
