@@ -1,10 +1,10 @@
 package me.golden.trio.genetic.drift
 
-import me.goldentrio.Contest
-import me.goldentrio.source.standard.string
+import me.task.Task
+import me.task.source.standard.string
 import kotlin.math.abs
 
-fun main() = Contest({
+fun main() = Task({
     string("6 3 1 6 5 -2 4") {
         name = "Test"
         expected = "2 1 -2 3 -2"

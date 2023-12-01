@@ -1,6 +1,6 @@
-package me.goldentrio.io
+package me.task.io
 
-import me.goldentrio.source.Source
+import me.task.source.Source
 import java.util.*
 
 internal class IOImplementation(

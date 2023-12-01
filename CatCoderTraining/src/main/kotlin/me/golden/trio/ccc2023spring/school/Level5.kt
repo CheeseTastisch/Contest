@@ -1,10 +1,9 @@
 package me.golden.trio.ccc2023spring.school
 
-import me.goldentrio.Contest
-import me.goldentrio.source.standard.directory
-import me.goldentrio.source.standard.file
+import me.task.Task
+import me.task.source.standard.directory
 
-fun main() = Contest({
+fun main() = Task({
     directory("CatCoderTraining/ccc2023spring/school/level5/") {
         expected("level5_example.in", "level5_example.out")
     }

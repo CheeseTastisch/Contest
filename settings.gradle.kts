@@ -13,3 +13,4 @@ rootProject.name = "Contest"
 include("Core")
 include("CCC2023Autumn")
 include("CatCoderTraining")
+include("AdventOfCode2023")

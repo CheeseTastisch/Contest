@@ -1,4 +1,4 @@
-package me.goldentrio.util.tupple
+package me.task.util.tupple
 
 import java.io.Serializable
 

@@ -1,4 +1,4 @@
-package me.goldentrio.source
+package me.task.source
 
 /**
  * A list of [Sources] used to read the inputs for a task and

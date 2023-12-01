@@ -1,4 +1,4 @@
-package me.goldentrio.source
+package me.task.source
 
 internal class SourcesImplementation : Sources {
 

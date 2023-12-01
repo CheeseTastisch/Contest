@@ -1,9 +1,9 @@
-package me.goldentrio.source.standard
+package me.task.source.standard
 
-import me.goldentrio.source.Source
-import me.goldentrio.source.Sources
-import me.goldentrio.util.differ.Difference
-import me.goldentrio.util.extention.path
+import me.task.source.Source
+import me.task.source.Sources
+import me.task.util.differ.Difference
+import me.task.util.extention.path
 import java.io.File
 import java.nio.file.Path
 import java.util.*
