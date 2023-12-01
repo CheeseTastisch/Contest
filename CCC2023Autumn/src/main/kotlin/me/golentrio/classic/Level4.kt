@@ -1,9 +1,9 @@
 package me.golentrio.classic
 
-import me.goldentrio.Contest
-import me.goldentrio.source.standard.directory
+import me.task.Task
+import me.task.source.standard.directory
 
-fun main() = Contest({
+fun main() = Task({
     directory("CCC2023Autumn/classic/lvl4") {
         outExtension = "validator"
         expected("level4_example.in", "level4_example.validator")

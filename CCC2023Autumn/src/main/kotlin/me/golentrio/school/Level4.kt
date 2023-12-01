@@ -1,10 +1,10 @@
 package me.golentrio.school
 
-import me.goldentrio.Contest
-import me.goldentrio.source.standard.directory
-import me.goldentrio.util.tupple.MutablePair
+import me.task.Task
+import me.task.source.standard.directory
+import me.task.util.tupple.MutablePair
 
-fun main() = Contest({
+fun main() = Task({
     directory("CCC2023Autumn/school/lvl4") {
         expected("level4_example.in", "level4_example.out")
     }

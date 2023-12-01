@@ -1,4 +1,4 @@
-package me.goldentrio.util.extention
+package me.task.util.extention
 
 /**
  * Groups the elements of the original collection.

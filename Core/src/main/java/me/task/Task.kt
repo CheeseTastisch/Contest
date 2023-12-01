@@ -1,14 +1,14 @@
-package me.goldentrio
+package me.task
 
-import me.goldentrio.io.IO
-import me.goldentrio.io.IOImplementation
-import me.goldentrio.source.Sources
-import me.goldentrio.source.SourcesImplementation
+import me.task.io.IO
+import me.task.io.IOImplementation
+import me.task.source.Sources
+import me.task.source.SourcesImplementation
 
 /**
- * The [Contest] object is the main entry point for the library.
+ * The [Task] object is the main entry point for the library.
  */
-object Contest {
+object Task {
 
     /**
      * Tries to solve the given [sources] with the given [solve] function.

@@ -1,9 +1,9 @@
 package me.golden.trio
 
-import me.goldentrio.Contest
-import me.goldentrio.source.standard.string
+import me.task.Task
+import me.task.source.standard.string
 
-fun main() = Contest({
+fun main() = Task({
     string("4567") {
         expected = "3"
     }

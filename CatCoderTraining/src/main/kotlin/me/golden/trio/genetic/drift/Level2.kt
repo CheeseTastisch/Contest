@@ -1,9 +1,9 @@
 package me.golden.trio.genetic.drift
 
-import me.goldentrio.Contest
-import me.goldentrio.source.standard.string
+import me.task.Task
+import me.task.source.standard.string
 
-fun main() = Contest({
+fun main() = Task({
     string("6 3 1 6 5 -2 4 1 1 -2 4") {
         expected = "3 1 2 -5 -6 4"
     }

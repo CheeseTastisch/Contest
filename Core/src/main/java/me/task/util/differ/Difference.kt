@@ -1,6 +1,6 @@
-package me.goldentrio.util.differ
+package me.task.util.differ
 
-import me.goldentrio.util.extention.random
+import me.task.util.extention.random
 import java.io.File
 
 internal object Difference {

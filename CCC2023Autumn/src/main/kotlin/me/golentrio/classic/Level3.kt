@@ -1,10 +1,10 @@
 package me.golentrio.classic
 
-import me.goldentrio.Contest
-import me.goldentrio.source.standard.directory
+import me.task.Task
+import me.task.source.standard.directory
 import kotlin.math.abs
 
-fun main() = Contest({
+fun main() = Task({
     directory("CCC2023Autumn/classic/lvl3") {
         outExtension = "validator"
         expected("level3_example.in", "level3_example.validator")
