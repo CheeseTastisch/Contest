@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -7,6 +8,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AdventOfCode2023" />
+            <option value="$PROJECT_DIR$/CCC2023Autumn" />
+            <option value="$PROJECT_DIR$/CatCoderTraining" />
             <option value="$PROJECT_DIR$/Core" />
           </set>
         </option>
