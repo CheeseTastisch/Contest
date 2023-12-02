@@ -11,4 +11,6 @@ plugins {
 
 rootProject.name = "Contest"
 include("Core")
-include("Test")
+include("CCC2023Autumn")
+include("CatCoderTraining")
+include("AdventOfCode2023")
