@@ -5,9 +5,6 @@ including coding contests or the advent of code.
 - [Advent of Code](#advent-of-code)
 
 ## Cloudflight Coding Contest
-Some of the Cloudflight Coding Contets I have participated in are included in this repository.
-
-This includes the following contests:
 - [38th School CCC (Autumn 2023)](CCC2023Autumn/src/main/kotlin/me/golentrio/school)
   - Location: Traun (HTBLA Traun)
   - Completed Levels in Contests: 3
