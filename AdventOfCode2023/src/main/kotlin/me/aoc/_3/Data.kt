@@ -1,4 +1,4 @@
-package me.aoc.third
+package me.aoc._3
 
 enum class CellType {
 
