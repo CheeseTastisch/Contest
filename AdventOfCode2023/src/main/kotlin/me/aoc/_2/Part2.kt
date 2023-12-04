@@ -1,4 +1,4 @@
-package me.aoc.second
+package me.aoc._2
 
 import me.task.Task
 import me.task.source.standard.file
@@ -16,7 +16,7 @@ fun main() = Task({
     ) {
         expected = "2286"
     }
-    file("AdventOfCode2023/in/second/part2.in")
+    file("AdventOfCode2023/in/_2/part2.in")
 }) {
     var value = 0
     while (hasNextLine()) {

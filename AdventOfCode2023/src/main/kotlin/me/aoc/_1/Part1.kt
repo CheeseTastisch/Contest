@@ -1,4 +1,4 @@
-package me.aoc.first
+package me.aoc._1
 
 import me.task.Task
 import me.task.source.standard.file
@@ -13,7 +13,7 @@ fun main() = Task({
     """.trimIndent()) {
         expected = "142"
     }
-    file("AdventOfCode2023/in/first/part1.in")
+    file("AdventOfCode2023/in/_1/part1.in")
 }) {
     var value = 0
     while (hasNextLine()) {
