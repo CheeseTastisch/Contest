@@ -1,4 +1,4 @@
-package me.aoc.third
+package me.aoc._3
 
 import me.task.Task
 import me.task.source.standard.file
@@ -22,7 +22,7 @@ fun main() = Task({
     ) {
         expected = "467835"
     }
-    file("AdventOfCode2023/in/third/part2.in")
+    file("AdventOfCode2023/in/_3/part2.in")
 }) {
     val grid = Grid(rows = inputQueue.size, columns = readValue(true).length)
 
