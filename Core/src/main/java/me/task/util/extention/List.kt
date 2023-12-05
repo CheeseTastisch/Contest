@@ -32,3 +32,12 @@ fun <T> Iterable<T>.groupByCompare(compare: (T, T) -> Boolean): Map<T, List<T>> 
 
     return groups
 }
+
+/**
+ * Removes the last [n] element of the list and returns it.
+ */
+fun <T> MutableList<T>.removeLast(n: Int): List<T> {
+    val removed = mutableListOf<T>()
+    for (i in 1..n) removed.add(removeLast())
+    return removed.reversed()
+}
