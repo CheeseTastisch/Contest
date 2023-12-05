@@ -17,3 +17,10 @@ fun String.Companion.random(length: Int = 8): String {
         .map { source.random() }
         .joinToString("")
 }
+
+/**
+ * Returns a string with only distinct characters.
+ *
+ * The remaining characters are in the same order as in the original string.
+ */
+fun String.distinct(): String = this.toList().distinct().joinToString("")
