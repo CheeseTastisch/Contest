@@ -1,4 +1,4 @@
-package me.aoc._2
+package me.aoc.day2
 
 import me.task.Task
 import me.task.source.standard.file
@@ -14,18 +14,15 @@ fun main() = Task({
         Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
     """.trimIndent()
     ) {
-        expected = "2286"
+        expected = "8"
     }
-    file("AdventOfCode2023/in/_2/part2.in")
+    file("AdventOfCode2023/in/day2/part1.in")
 }) {
     var value = 0
     while (hasNextLine()) {
         readValue()
         val id = readValue().replace(":", "").toInt()
-
-        var red = 0
-        var green = 0
-        var blue = 0
+        var possibile = true
 
         while (hasNextValue()) {
             val amount = readInt()
@@ -36,13 +33,15 @@ fun main() = Task({
             )
 
             when(color) {
-                Color.RED -> if (amount > red) red = amount
-                Color.GREEN -> if (amount > green) green = amount
-                Color.BLUE -> if (amount > blue) blue = amount
+                Color.RED -> if (amount > 12) possibile = false
+                Color.GREEN -> if (amount > 13) possibile = false
+                Color.BLUE -> if (amount > 14) possibile = false
             }
+
+            if (!possibile) break
         }
 
-        value += red * green * blue
+        if (possibile) value += id
         readValues()
     }
     writeValue(value)

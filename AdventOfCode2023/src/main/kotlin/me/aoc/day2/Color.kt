@@ -1,4 +1,4 @@
-package me.aoc._2
+package me.aoc.day2
 
 enum class Color(val identifier: String) {
 
