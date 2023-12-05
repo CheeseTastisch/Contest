@@ -1,4 +1,4 @@
-package me.aoc._3
+package me.aoc.day3
 
 enum class CellType {
 

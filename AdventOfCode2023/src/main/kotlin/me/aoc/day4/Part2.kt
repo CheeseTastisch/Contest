@@ -1,4 +1,4 @@
-package me.aoc._4
+package me.aoc.day4
 
 import me.aoc.util.ChangingValue
 import me.task.Task
@@ -18,7 +18,7 @@ fun main() = Task({
     ) {
         expected = "30"
     }
-    file("AdventOfCode2023/in/_4/part2.in")
+    file("AdventOfCode2023/in/day4/part2.in")
 }) {
     val cards = mutableMapOf<Int, ChangingValue<Int>>()
     for (i in 1..inputQueue.size) cards[i] = ChangingValue(1)

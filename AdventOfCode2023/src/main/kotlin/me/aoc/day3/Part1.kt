@@ -1,4 +1,4 @@
-package me.aoc._3
+package me.aoc.day3
 
 import me.task.Task
 import me.task.source.standard.file
@@ -20,9 +20,9 @@ fun main() = Task({
         .664.598..
     """.trimIndent()
     ) {
-        expected = "467835"
+        expected = "4361"
     }
-    file("AdventOfCode2023/in/_3/part2.in")
+    file("AdventOfCode2023/in/day3/part1.in")
 }) {
     val grid = Grid(rows = inputQueue.size, columns = readValue(true).length)
 
@@ -53,10 +53,6 @@ fun main() = Task({
 
                 when (char) {
                     '.' -> row.add(CellType.EMPTY)
-                    '*' -> {
-                        row.add(CellType.PART)
-                        grid.possibleGears.add(PossibleGears(index, grid.cells.size))
-                    }
                     else -> row.add(CellType.PART)
                 }
             }
@@ -72,5 +68,9 @@ fun main() = Task({
         grid.cells.add(row)
     }
 
-    writeValue(grid.possibleGears.sumOf { it.getRatio(grid) })
+    writeValue(
+        grid.numbers
+            .filter { it.hasAdjacentToPart(grid) }
+            .sumOf { it.value }
+    )
 }
