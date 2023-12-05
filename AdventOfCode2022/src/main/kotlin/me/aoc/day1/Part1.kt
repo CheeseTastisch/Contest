@@ -1,0 +1,43 @@
+package me.aoc.day1
+
+import me.task.Task
+import me.task.source.standard.file
+import me.task.source.standard.string
+
+fun main() = Task({
+    string("""
+        1000
+        2000
+        3000
+
+        4000
+
+        5000
+        6000
+
+        7000
+        8000
+        9000
+
+        10000
+    """.trimIndent()) {
+        expected = "24000"
+    }
+    file("AdventOfCode2022/in/day1/part1.in")
+}){
+    var mostCalories = 0
+    var currentCalories = 0
+
+    while (hasNextLine()) {
+        val value = readValue(endOfLine = true).toIntOrNull()
+        if (value == null) {
+            if (currentCalories > mostCalories) mostCalories = currentCalories
+            currentCalories = 0
+        } else {
+            currentCalories += value
+        }
+    }
+    if (currentCalories > mostCalories) mostCalories = currentCalories
+
+    writeValue(mostCalories)
+}

@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AdventOfCode2022" />
             <option value="$PROJECT_DIR$/AdventOfCode2023" />
             <option value="$PROJECT_DIR$/CCC2023Autumn" />
             <option value="$PROJECT_DIR$/CatCoderTraining" />
