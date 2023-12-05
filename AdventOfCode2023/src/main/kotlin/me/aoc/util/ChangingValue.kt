@@ -7,3 +7,7 @@ class ChangingValue<T>(var value: T) {
     }
 
 }
+
+fun <T> List<ChangingValue<T>>.modify(modifier: (T) -> T) {
+    forEach { it.modify(modifier) }
+}

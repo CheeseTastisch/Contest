@@ -21,4 +21,4 @@ including coding contests or the advent of code.
 
 ## Advent of Code
 - [Advent of Code 2023](AdventOfCode2023/src/main/kotlin/me/aoc)
-  - Collected Stars: 8
+  - Collected Stars: 10
