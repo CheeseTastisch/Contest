@@ -1,4 +1,4 @@
-package me.golentrio.school
+package me.goldentrio.school
 
 data class Piece(
     var top: Type,
