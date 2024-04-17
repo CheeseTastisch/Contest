@@ -1,4 +1,4 @@
-package me.golentrio.classic
+package me.goldentrio.classic
 
 enum class Type(val char: Char) {
 

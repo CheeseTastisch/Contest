@@ -5,13 +5,13 @@ including coding contests or the advent of code.
 - [Advent of Code](#advent-of-code)
 
 ## Cloudflight Coding Contest
-- [38th School CCC (Autumn 2023)](CCC2023Autumn/src/main/kotlin/me/golentrio/school)
+- [38th School CCC (Autumn 2023)](CCC2023Autumn/src/main/kotlin/me/goldentrio/school)
   - Location: Traun (HTBLA Traun)
   - Completed Levels: 4 (3 in Contest)
   - Total Time: _Hidden due to an error in the validation system_
   - Local Rank: 1
   - Global Rank: _Hidden due to an error in the validation system_
-- [38th Classic CCC (Autumn 2023)](CCC2023Autumn/src/main/kotlin/me/golentrio/classic)
+- [38th Classic CCC (Autumn 2023)](CCC2023Autumn/src/main/kotlin/me/goldentrio/classic)
   - Location: Linz (JKU Linz)
   - Completed Levels: 4 (4 in Contest)
   - Total Time: 00:48:23

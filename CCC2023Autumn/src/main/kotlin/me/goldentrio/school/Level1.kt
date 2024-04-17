@@ -1,15 +1,14 @@
-package me.golentrio.school
+package me.goldentrio.school
 
 import me.task.Task
 import me.task.source.standard.directory
-import me.task.util.extention.groupByCompare
 
 fun main() = Task({
-    directory("CCC2023Autumn/school/lvl2") {
-        expected("level2_example.in", "level2_example.out")
+    directory("CCC2023Autumn/school/lvl1") {
+        expected("level1_example.in", "level1_example.out")
     }
 }) {
-    readValue(endOfLine = true)
+    readValues()
 
     val pieces = mutableListOf<Piece>()
     while (hasNextLine()) {
@@ -24,7 +23,7 @@ fun main() = Task({
     }
 
     pieces
-        .groupByCompare { first, second -> first.equalsIgnoreOrientation(second) }
+        .groupBy { it }
         .forEach { (piece, list) ->
             writeValue(list.size, "${piece.top.type},${piece.right.type},${piece.bottom.type},${piece.left.type}")
         }
