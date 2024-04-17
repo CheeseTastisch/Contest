@@ -17,6 +17,18 @@ including coding contests or the advent of code.
   - Total Time: 00:48:23
   - Local Rank: 16
   - Global Rank: 156
+- [39th School CCC (Spring 2024)](CCC2024Spring/src/main/kotlin/me/goldentrio/school)
+  - Location: Vienna (City Hall Vienna)
+  - Completed Levels: ? (? in Contest)
+  - Total Time: ?
+  - Local Rank: ?
+  - Global Rank: ?
+- [39th Classic CCC (Spring 2024)](CCC2024Spring/src/main/kotlin/me/goldentrio/classic)
+  - Location: Vienna (City Hall Vienna)
+  - Completed Levels: ? (? in Contest)
+  - Total Time: ?
+  - Local Rank: ?
+  - Global Rank: ?
 
 ## Advent of Code
 - [Advent of Code 2023](AdventOfCode2023/src/main/kotlin/me/aoc)
