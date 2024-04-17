@@ -1,4 +1,4 @@
-package me.golentrio.classic
+package me.goldentrio.classic
 
 import me.task.Task
 import me.task.source.standard.directory

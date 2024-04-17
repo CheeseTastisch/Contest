@@ -1,4 +1,4 @@
-package me.golentrio.school
+package me.goldentrio.school
 
 import me.task.Task
 import me.task.source.standard.directory
