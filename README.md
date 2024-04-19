@@ -29,9 +29,9 @@ including coding contests or the advent of code.
 - [39th Classic CCC (Spring 2024)](CCC2024Spring/src/main/kotlin/me/goldentrio/classic)
   - Team: The Golden Trio
   - Location: Vienna (City Hall Vienna)
-  - Completed Levels: ? (? in Contest)
-  - Total Time: ?
-  - Local Rank: ?
+  - Completed Levels: 3 (Some idea for 4, but not finished)
+  - Total Time: 01:38:13
+  - Local Rank: 62
   - Global Rank: ?
 
 ## Advent of Code
