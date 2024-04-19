@@ -60,6 +60,7 @@ fun Sources.directory(directory: File, config: DirectoryConfiguration.() -> Unit
     directory.listFiles()
         ?.filter { it.isFile }
         ?.filter { it.extension != configuration.outExtension }
+        ?.sortedBy { it.name }
         ?.forEach { file ->
             +FileSource(file, FileConfiguration().apply {
                 valueSplit = configuration.valueSplit
@@ -79,9 +80,11 @@ fun Sources.directory(directory: File, config: DirectoryConfiguration.() -> Unit
 /**
  * Adds all files from a directory to the [Sources].
  */
-fun Sources.directory(directory: Path, config: DirectoryConfiguration.() -> Unit = {}) = directory(directory.toFile(), config)
+fun Sources.directory(directory: Path, config: DirectoryConfiguration.() -> Unit = {}) =
+    directory(directory.toFile(), config)
 
 /**
  * Adds all files from a directory to the [Sources].
  */
-fun Sources.directory(directory: String, config: DirectoryConfiguration.() -> Unit = {}) = directory(directory.path, config)
+fun Sources.directory(directory: String, config: DirectoryConfiguration.() -> Unit = {}) =
+    directory(directory.path, config)
