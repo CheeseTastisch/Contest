@@ -33,6 +33,13 @@ including coding contests or the advent of code.
   - Total Time: 01:38:13
   - Local Rank: 62
   - Global Rank: ?
+- [40th Classic CCC (Autumn 2024)](CCC2024Autumn/src/main/kotlin/me/goldenduo)
+  - Team: The Golden Duo
+  - Location: Linz (JKU Linz)
+  - Completed Levels: 5
+  - Total Time: 03:46:50
+  - Local Rank: 8
+  - Global Rank: ?
 
 ## Advent of Code
 - [Advent of Code 2023](AdventOfCode2023/src/main/kotlin/me/aoc)
