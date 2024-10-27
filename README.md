@@ -39,7 +39,7 @@ including coding contests or the advent of code.
   - Completed Levels: 5
   - Total Time: 03:46:50
   - Local Rank: 8
-  - Global Rank: ?
+  - Global Rank: 90
 
 ## Advent of Code
 - [Advent of Code 2023](AdventOfCode2023/src/main/kotlin/me/aoc)
