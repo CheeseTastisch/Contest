@@ -18,8 +18,9 @@ fun main() = Task({
         expected = "11"
     }
 
-    inferFile("day1/part1.in") {
+    inferFile("day1.in") {
         valueSplit = "   "
+        outExtension = "part1"
     }
 }) {
     val list1 = mutableListOf<Int>()
