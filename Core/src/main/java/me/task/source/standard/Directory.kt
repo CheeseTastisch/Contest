@@ -99,9 +99,11 @@ fun Sources.inferDirectory(name: String, config: DirectoryConfiguration.() -> Un
 
 internal fun getModuleDirectory(): File {
     val caller = Thread.currentThread().stackTrace[3]
-    val callerFile = File(caller.fileName ?: throw IllegalStateException("No file name found in stack trace"))
+    val cn = caller.className.replace(".", "/") + ".class"
+    val u = DirectoryConfiguration::class.java.classLoader.getResource(cn)
+        ?: throw IllegalStateException("Could not find the class file for ${caller.className}")
 
-    var moduleDirectory = callerFile
+    var moduleDirectory = File(u.toURI())
     while (!moduleDirectory.isModuleDirectory()) {
         moduleDirectory = moduleDirectory.parentFile
     }
