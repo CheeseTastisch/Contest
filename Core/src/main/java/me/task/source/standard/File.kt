@@ -33,7 +33,10 @@ internal class FileSource(
         outputFile.createNewFile()
         outputFile.writeText(outputString)
 
-        if (config.expected != null) {
+        val expected = config.expected
+            ?: config.expectedExtension?.let { File(inputFile.parentFile, "${inputFile.nameWithoutExtension}.$it") }
+
+        if (expected?.exists() == true) {
             println(
                 """
                 ------------ Task ${config.name ?: "unnamed"} ------------
@@ -107,6 +110,12 @@ class FileConfiguration {
     var expected: File? = null
 
     /**
+     * The extension of the expected file (appended to the input file name).
+     * This is only used if [expected] is not set.
+     */
+    var expectedExtension: String? = null
+
+    /**
      * Sets the expected output file.
      */
     fun expected(path: Path) {
@@ -136,3 +145,11 @@ fun Sources.file(path: Path, config: FileConfiguration.() -> Unit = {}) = file(p
  * Adds a [FileSource] to the [Sources].
  */
 fun Sources.file(path: String, config: FileConfiguration.() -> Unit = {}) = file(path.path, config)
+
+/**
+ * Adds a [FileSource] to the [Sources], where file is the `{currentModule}/in/[path]`.
+ */
+fun Sources.inferFile(path: String, config: FileConfiguration.() -> Unit = {}) {
+    val file = getModuleDirectory().resolve("in").resolve(path)
+    file(file, config)
+}

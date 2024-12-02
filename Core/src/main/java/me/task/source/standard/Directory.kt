@@ -88,3 +88,28 @@ fun Sources.directory(directory: Path, config: DirectoryConfiguration.() -> Unit
  */
 fun Sources.directory(directory: String, config: DirectoryConfiguration.() -> Unit = {}) =
     directory(directory.path, config)
+
+/**
+ * Adds all files from a directory to the [Sources], which is a subdirectory of `{currentModule}/in/[directory]`
+ */
+fun Sources.inferDirectory(name: String, config: DirectoryConfiguration.() -> Unit = {}) {
+    val directory = getModuleDirectory().resolve("in").resolve(name)
+    directory(directory, config)
+}
+
+internal fun getModuleDirectory(): File {
+    val caller = Thread.currentThread().stackTrace[3]
+    val callerFile = File(caller.fileName ?: throw IllegalStateException("No file name found in stack trace"))
+
+    var moduleDirectory = callerFile
+    while (!moduleDirectory.isModuleDirectory()) {
+        moduleDirectory = moduleDirectory.parentFile
+    }
+
+    return moduleDirectory
+}
+
+internal fun File.isModuleDirectory(): Boolean =
+    isDirectory &&
+            listFiles()?.any { it.name == "src" } == true &&
+            listFiles()?.any { it.name == "build.gradle.kts" } == true
