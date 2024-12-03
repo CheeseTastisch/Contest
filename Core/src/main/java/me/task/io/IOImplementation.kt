@@ -39,6 +39,12 @@ internal class IOImplementation(
         return outputQueue.peekLast()
     }
 
+    override fun readAllValues(): List<String> {
+        val values = mutableListOf<String>()
+        while (hasNextLine()) values.addAll(readValues())
+        return values
+    }
+
     override fun writeValue(vararg values: Any, append: Boolean, lineBreak: Boolean) {
         if (!append && outputQueue.peekLast().isNotEmpty()) outputQueue.add(LinkedList())
 
