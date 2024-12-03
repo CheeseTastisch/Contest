@@ -159,6 +159,11 @@ interface IO {
     fun getCurrentLine(): Deque<String>
 
     /**
+     * Reads all remaining values from the input.
+     */
+    fun readAllValues(): List<String>
+
+    /**
      * Writes the given [values] to the output.
      * This will map all values to [String]s, by calling there `toString` function.
      *
