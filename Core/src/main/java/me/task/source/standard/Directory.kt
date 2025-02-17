@@ -30,6 +30,11 @@ class DirectoryConfiguration {
      */
     var outExtension = "out"
 
+    /**
+     * Only run files that have some expected output
+     */
+    var onlyExpected = false
+
     internal val expectations = mutableMapOf<String, File>()
 
     /**
@@ -61,6 +66,11 @@ fun Sources.directory(directory: File, config: DirectoryConfiguration.() -> Unit
         ?.filter { it.isFile }
         ?.filter { it.extension != configuration.outExtension }
         ?.sortedBy { it.name }
+        ?.filter {
+            !configuration.onlyExpected
+                    || configuration.expectations[it.name] != null
+                    || configuration.expectations[it.nameWithoutExtension] != null
+        }
         ?.forEach { file ->
             +FileSource(file, FileConfiguration().apply {
                 valueSplit = configuration.valueSplit
